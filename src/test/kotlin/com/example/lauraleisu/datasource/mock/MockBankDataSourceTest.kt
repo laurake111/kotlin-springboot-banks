@@ -1,6 +1,5 @@
 package com.example.lauraleisu.datasource.mock
 
-import com.example.lauraleisu.model.Bank
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.util.Sets
 import org.junit.jupiter.api.Test
@@ -14,7 +13,7 @@ internal class MockBankDataSourceTest {
         //arrange
 
         //act
-        val banks = mockDataSource.getBanks()
+        val banks = mockDataSource.retrieveBanks()
 
         //assert
         assertThat(banks).isNotEmpty
@@ -26,7 +25,7 @@ internal class MockBankDataSourceTest {
         //arrange
 
         //act
-        val banks = mockDataSource.getBanks()
+        val banks = mockDataSource.retrieveBanks()
         val tempBanks: MutableSet<String> = Sets.newHashSet()
         var unique = true;
 
@@ -47,7 +46,7 @@ internal class MockBankDataSourceTest {
     fun `should provide some mock data`() {
 
         //act
-        val banks = mockDataSource.getBanks()
+        val banks = mockDataSource.retrieveBanks()
 
         //assert
         assertThat(banks).allMatch { it.accountNumber.isNotBlank() }
