@@ -22,14 +22,10 @@ internal class MockBankDataSourceTest {
 
     @Test
     fun `should provide unique accountnumber`() {
-        //arrange
-
-        //act
         val banks = mockDataSource.retrieveBanks()
         val tempBanks: MutableSet<String> = Sets.newHashSet()
         var unique = true;
 
-        //assert
         for (bank in banks) {
             if (tempBanks.contains(bank.accountNumber)){
                 unique = false;
@@ -44,11 +40,8 @@ internal class MockBankDataSourceTest {
 
     @Test
     fun `should provide some mock data`() {
-
-        //act
         val banks = mockDataSource.retrieveBanks()
 
-        //assert
         assertThat(banks).allMatch { it.accountNumber.isNotBlank() }
         assertThat(banks).anyMatch { it.trust != 0.0 }
         assertThat(banks).anyMatch { it.transactionFee != 0}
